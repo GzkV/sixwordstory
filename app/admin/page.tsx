@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const sample = {
-  id: "p_example", title: "The Mouse-Sized Post Office", scene: "A folded paper door guards a post office for mice. A copper coin fits the tiny slot cut into it.", goal: "Deliver the letter.", guessesAllowed: 6,
-  answer: ["PUSH", "COIN", "THROUGH", "THE", "TINY", "SLOT"], winText: "A mouse-sized mailbox gives a very official click.",
-  coda: ["A whiskered clerk stamps the coin with great ceremony.", "Somewhere, a seed packet begins its journey.", "The smallest post office has the biggest delivery route."],
+  id: "p_example", title: "The Mouse-Sized Post Office", scene: "At a mouse post office, a folded paper door protects the mail room. A mouse clerk peeks through a tiny brass slot; a letter to a friend waits on the counter beside a stamp and one crumb. A silver spoon could pry the paper door, while a toy flute sits ready to call the clerk away. The friend waits at the little window across the alley.", goal: "Send the letter to its friend.", guessesAllowed: 6,
+  answer: ["PUSH", "LETTER", "THROUGH", "THE", "TINY", "SLOT"], winText: "The tiny slot swallows the letter with one very official shff.",
+  coda: ["The mouse clerk stamps the letter with one careful paw.", "A reply slides back through the slot: 'Yes—and please bring a crumb.'", "Across the alley, the friend taps twice at the window."],
   bank: [
-    { word: "COIN", kind: "object" }, { word: "SLOT", kind: "target" }, { word: "WATER", kind: "object" },
+    { word: "LETTER", kind: "object" }, { word: "SLOT", kind: "target" }, { word: "CLERK", kind: "object" },
     { word: "SPOON", kind: "object", isDecoy: true }, { word: "FLUTE", kind: "object", isDecoy: true },
-    { word: "ROPE", kind: "object" }, { word: "BUTTON", kind: "object" }, { word: "BOX", kind: "target" },
-    { word: "WINDOW", kind: "target" }, { word: "WELL", kind: "target" },
+    { word: "DOOR", kind: "target" }, { word: "STAMP", kind: "object" }, { word: "FRIEND", kind: "object" },
+    { word: "WINDOW", kind: "target" }, { word: "CRUMB", kind: "object" },
   ],
   bespoke: [{ word: "THROUGH", kind: "article" }, { word: "THE", kind: "article" }, { word: "TINY", kind: "target" }],
-  flavor: ["A quiet creak answers."], hints: ["What might fit a lock?", "Read the scene once more."],
+  flavor: ["A quiet creak answers.", "Somewhere, a tiny clerk clears a throat."], hints: ["What is waiting to be sent?", "The brass opening is more than decoration."],
 };
 type Scheduled = { date: string; id: string; title: string };
 const scheduleKey = "sws-admin-schedule-v1";

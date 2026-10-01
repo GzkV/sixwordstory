@@ -21,6 +21,18 @@ test("all thirty seeded daily puzzles pass mechanical validation", () => {
   for (const puzzle of puzzles) assert.deepEqual(validatePuzzle(puzzle), [], `${puzzle.id}: ${validatePuzzle(puzzle).join("; ")}`);
 });
 
+test("every daily puzzle has two decoys explicitly introduced in its opening", () => {
+  const normalize = (value: string) => value.toUpperCase().replace(/[^A-Z]/g, "");
+  for (const puzzle of puzzles) {
+    const decoys = puzzle.bank.filter((entry) => entry.isDecoy);
+    assert.equal(decoys.length, 2, `${puzzle.id} should have two authored decoys`);
+    const scene = normalize(puzzle.scene);
+    for (const decoy of decoys) {
+      assert.ok(scene.includes(normalize(decoy.word)), `${puzzle.id}: decoy ${decoy.word} is not introduced in the scene`);
+    }
+  }
+});
+
 test("validator catches missing answer words and malformed bank sizes", () => {
   const invalid = { ...puzzles[0], answer: ["USE", "KEY", "ON", "THE", "OAK", "MOON"], bank: puzzles[0].bank.slice(1) };
   const errors = validatePuzzle(invalid);

@@ -241,8 +241,7 @@ can't see.
 {
   "id": "p_daily_009",
   "title": "The Gloomy Doorstep",
-  "scene": "A study, lit by a single candle. The only exit is a heavy oak door,
-            locked from the outside. A draft snuffles under it.",
+  "scene": "A study is lit by one candle on a moonless night. Its only exit is a heavy oak door locked from outside; a brass key lies beside its iron lock. A bent spoon and long paperclip sit on the desk as tempting lock-picks. A moor wind slips under the door, where something taps and softly snuffles; dusty books and a red bookmark lie nearby.",
   "goal": "Escape the study.",
   "guessesAllowed": 6,
 
@@ -251,22 +250,22 @@ can't see.
 
   "coda": [                                    // 2–4 sentences, hidden until a solve (§5.6)
     "The bolt gives way with a sound like a held breath let go.",       // crumb 1
-    "Cold air off the moor, and the candle gutters flat behind you.",  // crumb 2
-    "Whatever was snuffling under the door has gone quiet.",           // crumb 3
-    "You step out into a night that had been waiting all evening."     // win-only beat
+    "Cold moor air sweeps the candle flat behind you.",                  // crumb 2
+    "The tapping belongs to a field mouse, which scurries off with a red bookmark.", // crumb 3
+    "You step out into a moonless night that had been waiting all evening." // win-only beat
   ],                          // crumbs ARE coda sentences: all but the last are drip-eligible
 
   "bank": [
-    { "word": "KEY",    "kind": "object" },
-    { "word": "WATER",  "kind": "object" },
-    { "word": "ROPE",   "kind": "object" },
-    { "word": "SPOON",  "kind": "object", "isDecoy": true },   // disguised as object until end
-    { "word": "FLUTE",  "kind": "object", "isDecoy": true },
-    { "word": "CANDLE", "kind": "target" },
-    { "word": "DOOR",   "kind": "target" },
-    { "word": "WINDOW", "kind": "target" },
-    { "word": "WELL",   "kind": "target" },
-    { "word": "POUR",   "kind": "verb" }
+    { "word": "KEY",       "kind": "object" },
+    { "word": "SPOON",     "kind": "object", "isDecoy": true },   // a plausible lock-pick
+    { "word": "PAPERCLIP", "kind": "object", "isDecoy": true },
+    { "word": "CANDLE",    "kind": "object" },
+    { "word": "DOOR",      "kind": "target" },
+    { "word": "WINDOW",    "kind": "target" },
+    { "word": "DESK",      "kind": "target" },
+    { "word": "BOOK",      "kind": "object" },
+    { "word": "BOOKMARK",  "kind": "object" },
+    { "word": "LOCK",      "kind": "target" }
   ],
   "bespoke": [
     { "word": "OAK",    "kind": "target" },   // matched to scene text
@@ -278,7 +277,7 @@ can't see.
 
   "flavor": [                                   // optional, non-logic charm lines
     "The oak door does not budge.",
-    "A low rumbling snore answers you."
+    "The moor wind stirs the candle flame."
   ],
   "hints": ["The draft under the door has a story to tell.",
              "What is the candle here for?"]
@@ -391,11 +390,10 @@ Do not rely on validator case-normalization to make a differently cased answer p
 Whether the six words are *deducible from the scene* is a language/design judgment, not a
 computable property. The current validator does not assess fairness. Apply the authoring sequence
 in §3.5 and have a human review the exact scene and exact answer before treating a puzzle as
-editorially ready. In particular, the seeded puzzles are generated from answer fields using a
-shared formula ([seed generation](lib/puzzles.ts:47)); passing the seed test means only that each
-seed passes the mechanical validator. Some generated answer combinations may not fit the scene
-details or express the intended action naturally. Review and edit each exact answer against its
-scene; the seeds should not be assumed to have passed the editorial criteria in this document.
+editorially ready. The 30 seed puzzles are now authored as complete entries in [`lib/puzzles.ts`](lib/puzzles.ts);
+the seed test establishes only that each passes the mechanical validator. It does not certify
+semantic fairness, decoy quality, or coda continuity. Review each exact answer against its scene
+and do not treat a green validator as editorial approval.
 
 ### 6.3 Current validator checks (mechanical only)
 
